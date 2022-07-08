@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('number','Time');
+        data.addColumn({type: 'string', role: 'annotation'});
+        data.addColumn({type: 'string', role: 'annotationText'});
+        data.addColumn('number','Cost (Actual)');
+        data.addColumn('number','Cost (Expected)');
+        data.addRow([1,null,null,10,15]);
+        data.addRow([3,null,null,30,30]);
+        data.addRow([5,null,null,50,45]);
+        data.addRow([7,null,null,80,60]);
+        data.addRow([9,null,null,90,75]);
+        data.addRow([11,null,null,100,90]);
+        data.addRow([13,null,null,120,105]);
+        data.addRow([15,null,null,150,120]);
+        data.addRow([17,'Ist EOI','Ist EOI annotation',180,135]);
+        data.addRow([19,null,null,185,150]);
+        data.addRow([21,null,null,190,165]);
+        data.addRow([23,null,null,210,180]);
+        data.addRow([30,null,null,260,195]);
+        data.addRow([32,null,null,280,210]);
+        data.addRow([34,null,null,290,225]);
+        data.addRow([36,null,null,330,240]);
+        data.addRow([38,null,null,370,255]);
+        data.addRow([40,null,null,400,270]);
+        data.addRow([42,'Deadline','Deadline annotation',430,285]);
+        data.addRow([46,null,null,460,null]);
+        data.addRow([50,null,null,490,null]);
+        var options = {
+          title: 'Contractor Performance',
+          curveType: 'function',
+          annotations: {style: 'line'},
+          legend: { position: 'bottom' },
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="curve_chart" style="width: 900px; height: 500px"></div>
+  </body>
+</html>
